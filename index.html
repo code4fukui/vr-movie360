@@ -1,10 +1,26 @@
 <!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
-<script type="module">
-import "https://code4fukui.github.io/aframe/dist/aframe-master.min.js";
-</script>
+<script src="https://code4fukui.github.io/aframe/dist/aframe-master.min.js"></script>
 
 <body>
   <a-scene>
-    <a-sky xsrc="./R0011033.MP4" src="./skijam.mp4"></a-sky>
+    <a-sky id=sky rotation="0 0 0" x-src=https://code4fukui.github.io/vr-movie360/skijam.mp4 xsrc="./R0011033.MP4" xsrc="./skijam.mp4"></a-sky>
   </a-scene>
 </body>
+
+<script type="module">
+import { fix0 } from "https://js.sabae.cc/fix0.js";
+
+const fps = 2;
+
+let n = 1;
+const len = 81;
+setInterval(() => {
+  //const src = "https://code4fukui.github.io/vr-movie360/img/skijam-" + fix0(n, 6) + ".jpg";
+  const src = "./img/skijam-" + fix0(n, 6) + ".jpg";
+  sky.setAttribute("src", src);
+  n++;
+  if (n == len) {
+    n = 1;
+  }
+}, 1000 / fps);
+</script>
